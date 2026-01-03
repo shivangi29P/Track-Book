@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+<h2>Available Vehicles</h2>
+
+<% if (vehicles.length === 0) { %>
+  <div class="alert alert-info">No vehicles available at the moment.</div>
+<% } else { %>
+  <div class="row">
+    <% vehicles.forEach(vehicle => { %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= vehicle.vehicleName %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= vehicle.vehicleNumber %></h6>
+            <p class="card-text">
+              <strong>Owner:</strong> <%= vehicle.owner.name %><br>
+              <strong>Route:</strong> <%= vehicle.source %> to <%= vehicle.destination %><br>
+              <strong>Departure:</strong> <%= vehicle.departureTime %>
+            </p>
+            <a href="/customer/vehicle/<%= vehicle._id %>" class="btn btn-primary">View Seats</a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+<h3><strong>Vehicle name: </strong><%= vehicle.vehicleName %></h3>
+<p>
+  <strong>Owner:</strong> <%= vehicle.owner.name %><br>
+  <strong>Route:</strong> <%= vehicle.source %> to <%= vehicle.destination %><br>
+  <strong>Departure:</strong> <%= vehicle.departureTime %>
+</p>
+
+<div class="card mb-4">
+  <div class="card-header">
+    <h5>Select a Seat</h5>
+  </div>
+  <div class="card-body">
+    <div class="seat-layout" id="seatLayout" data-vehicle-id="<%= vehicle._id %>">
+      <% for(let i = 0; i < vehicle.seats.length; i++) { %>
+        <div class="seat <%= vehicle.seats[i].isBooked ? 'booked' : 'available' %>" 
+             data-seat="<%= vehicle.seats[i].seatNumber %>"
+             <%= vehicle.seats[i].isBooked ? 'disabled' : '' %>>
+          <%= vehicle.seats[i].seatNumber %>
+        </div>
+      <% } %>
+    </div>
+    <div class="seat-legend mt-3">
+      <span class="seat-indicator available"></span> Available
+      <span class="seat-indicator booked ml-3"></span> Booked
+      <span class="seat-indicator selected ml-3"></span> Selected
+    </div>
+  </div>
+</div>
+
+<div id="bookingForm" style="display: none;">
+  <div class="card">
+    <div class="card-header">
+      <h5>Confirm Booking</h5>
+    </div>
+    <div class="card-body">
+      <p>You are about to book seat <span id="selectedSeatNumber"></span> on <%= vehicle.vehicleName %>.</p>
+      <button id="confirmBooking" class="btn btn-success">Confirm Booking</button>
+      <button id="cancelBooking" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="bookingSuccess" style="display: none;">
+  <div class="alert alert-success">
+    <h4>Booking Successful!</h4>
+    <p>Your seat has been booked successfully. <a href="/customer/bookings">View your bookings</a>.</p>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

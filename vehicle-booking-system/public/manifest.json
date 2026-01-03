@@ -1,0 +1,22 @@
+{
+    "name": "Track & Book",
+    "short_name": "T&B",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#1976d2",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "/logo.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/logo1.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  

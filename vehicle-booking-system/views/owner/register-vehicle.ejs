@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vehicle Verification</title>
+    <link rel="stylesheet" href="/css/styles-verify.css">
+</head>
+<body>
+    <%- include ('../partials/header') %> 
+
+    <div class="box"><div class="container-box">
+        <div class="form-container-box">
+            <h1>Register your Vehicle</h1>
+            <form action="/register-vehicle" method="POST">
+                <input type="text" name="vehicleNumber" placeholder="Enter Vehicle Number" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+    
+    <%- include ('../partials/footer') %> 
+
+    
+   
+</body>
+</html>

@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+
+
+<h2>Welcome, <%= user.name %>!</h2>
+
+<div class="row mb-4">
+  <div class="col">
+    <a href="/owner/add-vehicle" class="btn btn-primary">Add Your Vehicle Details</a>
+    <!-- <a href="/owner/register-vehicle" class="btn btn-primary">Add New Vehicle</a> -->
+  </div>
+</div>
+
+<h3>Your Vehicle</h3>
+
+<% if (vehicles.length === 0) { %>
+  <div class="alert alert-info">
+    You haven't added your vehicles details yet <a href="/owner/add-vehicle">Add a vehicle</a> to get started.
+  </div>
+<% } else { %>
+  <div class="row">
+    <% vehicles.forEach(vehicle => { %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= vehicle.vehicleName %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= vehicle.vehicleNumber %></h6>
+            <p class="card-text">
+              <strong>Route:</strong> <%= vehicle.source %> to <%= vehicle.destination %><br>
+              <strong>Departure:</strong> <%= vehicle.departureTime %>
+            </p>
+            <a href="/owner/vehicle/<%= vehicle._id %>/bookings" class="btn btn-info">View Bookings</a>
+            <a href="/magic" class="btn btn-info">Get On Map</a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>

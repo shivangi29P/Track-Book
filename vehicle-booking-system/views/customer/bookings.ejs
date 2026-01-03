@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+
+<h2>My Bookings</h2>
+
+<% if (bookings.length === 0) { %>
+  <div class="alert alert-info">
+    You haven't made any bookings yet. <a href="/customer/vehicles">Browse vehicles</a> to book a seat.
+  </div>
+<% } else { %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>Vehicle</th>
+          <th>Route</th>
+          <th>Seat Number</th>
+          <th>Booking Date</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <% bookings.forEach(booking => { %>
+          <tr>
+            <td><%= booking.bookingId %></td>
+            <td><%= booking.vehicle.vehicleName %> (<%= booking.vehicle.vehicleNumber %>)</td>
+            <td><%= booking.vehicle.source %> to <%= booking.vehicle.destination %></td>
+            <td><%= booking.seatNumber %></td>
+            <td><%= new Date(booking.bookingDate).toLocaleString() %></td>
+            
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>

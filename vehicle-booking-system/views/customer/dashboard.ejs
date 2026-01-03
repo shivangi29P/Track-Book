@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+<h2>Customer Dashboard</h2>
+<p>Welcome, <%= user.name %>!</p>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Browse Vehicles</h5>
+        <p class="card-text">Search and book seats in available vehicles.</p>
+        <a href="/customer/vehicles" class="btn btn-primary">Browse Vehicles</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">My Bookings</h5>
+        <p class="card-text">View your booking history and details.</p>
+        <a href="/customer/bookings" class="btn btn-info">View Bookings</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

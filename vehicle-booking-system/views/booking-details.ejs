@@ -1,0 +1,79 @@
+<%- include('partials/header') %>
+
+<div class="card">
+  <div class="card-header">
+    <h3>Booking Receipt</h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="booking-receipt">
+          <h4 class="text-center mb-4">Vehicle Booking Receipt</h4>
+          
+          <div class="row mb-3">
+            <div class="col-6"><strong>Booking ID:</strong></div>
+            <div class="col-6"><%= booking.bookingId %></div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-6"><strong>Booking Date:</strong></div>
+            <div class="col-6"><%= new Date(booking.bookingDate).toLocaleString() %></div>
+          </div>
+          
+          <hr>
+          
+          <div class="row mb-3">
+            <div class="col-6"><strong>Vehicle:</strong></div>
+            <div class="col-6"><%= booking.vehicle.vehicleName %> (<%= booking.vehicle.vehicleNumber %>)</div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-6"><strong>Route:</strong></div>
+            <div class="col-6"><%= booking.vehicle.source %> to <%= booking.vehicle.destination %></div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-6"><strong>Departure Time:</strong></div>
+            <div class="col-6"><%= booking.vehicle.departureTime %></div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-6"><strong>Seat Number:</strong></div>
+            <div class="col-6"><%= booking.seatNumber %></div>
+          </div>
+          
+          <hr>
+          
+          <div class="row mb-3">
+            <div class="col-6"><strong>Customer Name:</strong></div>
+            <div class="col-6"><%= booking.customer.name %></div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-6"><strong>Customer Email:</strong></div>
+            <div class="col-6"><%= booking.customer.email %></div>
+          </div>
+          
+          <hr>
+          
+          <div class="row mb-3">
+            <div class="col-6"><strong>Vehicle Owner:</strong></div>
+            <div class="col-6"><%= booking.vehicle.owner.name %></div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-6"><strong>Owner Email:</strong></div>
+            <div class="col-6"><%= booking.vehicle.owner.email %></div>
+          </div>
+          
+          <div class="text-center mt-4">
+            <button class="btn btn-primary" onclick="window.print()">Print Receipt</button>
+            <a href="javascript:history.back()" class="btn btn-secondary ml-2">Go Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration Successful</title>
+    <link rel="stylesheet" href="/css/styles-verify.css">
+</head>
+<body>
+    <%- include ('../partials/header') %> 
+
+    <div class="box"><div class="container-box">
+        <div class="form-container-box">
+            <h2> ✔ Vehicle Registered Successfully!</h2>
+            <p>Your Vehicle Number: <strong><%= vehicleNumber %></strong></p>
+            <button type="button" onclick="window.location.href='/verify'">Proceed to Verification</button>
+        </div>    
+    </div>
+</div>
+    
+    <%- include ('../partials/footer') %> 
+
+</body>
+</html>
