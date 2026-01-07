@@ -6,10 +6,12 @@ const { protect, isOwner } = require('../middleware/auth');
 
 
 router.get('/dashboard', protect, isOwner, vehicleController.getOwnerVehicles);
-
+// tempo changes of routing of auth
 
 router.get('/register-vehicle', protect, isOwner, (req, res) => {
-  res.render('owner/register-vehicle', { user: req.user });
+  // res.render('owner/register-vehicle', { user: req.user });
+    res.render('owner/add-vehicle', { user: req.user });
+
 });
 
 
