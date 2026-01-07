@@ -30,29 +30,30 @@ router.post("/register-vehicle", async (req, res) => {
     }
 });
 
-router.get("/verify", (req, res) => res.render("owner/verify"));
-router.get("/v", (req, res) => res.render("owner/dashboard"));
+// router.get("/verify", (req, res) => res.render("owner/verify"));
+router.get("/verify", (req, res) => res.render("owner/dashboard"));
 
-router.post("/verify", upload.single("image"), async (req, res) => {
-    const { vehicleNumber } = req.body;
-    const imagePath = req.file.path;
 
-    const python = spawn("python", ["./python-scripts/ocr.py", imagePath]);
+// router.post("/verify", upload.single("image"), async (req, res) => {
+//     const { vehicleNumber } = req.body;
+//     const imagePath = req.file.path;
 
-    python.stdout.on("data", async (data) => {
-        const extractedText = data.toString().trim();
-        console.log("Extracted Text:", extractedText);
+//     const python = spawn("python", ["./python-scripts/ocr.py", imagePath]);
 
-        const vehicle = await VehicleData.findOne({ vehicleNumber });
-        if (vehicle && extractedText.includes(vehicleNumber)) {
-            res.redirect("/owner/dashboard?message=✅ Verification Successful!");
+//     python.stdout.on("data", async (data) => {
+//         const extractedText = data.toString().trim();
+//         console.log("Extracted Text:", extractedText);
 
-        } else {
-            res.render("owner/result", { message: "❌ Verification Failed!" });
-        }
-    });
+//         const vehicle = await VehicleData.findOne({ vehicleNumber });
+//         if (vehicle && extractedText.includes(vehicleNumber)) {
+//             res.redirect("/owner/dashboard?message=✅ Verification Successful!");
 
-    python.stderr.on("data", (data) => console.error("Python Error:", data.toString()));
-});
+//         } else {
+//             res.render("owner/result", { message: "❌ Verification Failed!" });
+//         }
+//     });
+
+//     python.stderr.on("data", (data) => console.error("Python Error:", data.toString()));
+// });
 
 module.exports = router;
